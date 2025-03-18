@@ -1,0 +1,62 @@
+.header {
+  background-color: #18181b; /* bg-zinc-900 */
+  color: #f4f4f5; /* text-zinc-100 */
+  padding-top: 0.75rem; /* py-3 */
+  padding-bottom: 0.75rem; /* py-3 */
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+  border-bottom: 1px solid #27272a; /* border-b border-zinc-800 */
+}
+
+.container {
+  max-width: 80rem; /* max-w-7xl */
+  margin-left: auto; /* mx-auto */
+  margin-right: auto; /* mx-auto */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftGroup {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* gap-8 */
+}
+
+.logo {
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 700; /* font-bold */
+  transition: color 150ms;
+}
+
+.logo:hover {
+  color: white; /* hover:text-white */
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem; /* gap-6 */
+}
+
+.navLink {
+  font-size: 0.875rem; /* text-sm */
+  transition: color 150ms;
+}
+
+.navLink:hover {
+  color: white; /* hover:text-white */
+}
+
+.profileButton {
+  padding: 0.25rem; /* p-1 */
+  transition: color 150ms;
+}
+
+.profileButton:hover {
+  color: white; /* hover:text-white */
+}
+
+.profileIcon {
+  height: 1.5rem; /* h-6 */
+  width: 1.5rem; /* w-6 */
+}
