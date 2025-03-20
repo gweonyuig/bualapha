@@ -2,7 +2,6 @@
 
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import styles from "../../page.module.css";
 
 // Sample blog post data (in a real app, this would come from a database or API)
 const blogPostsData = [
@@ -276,7 +275,7 @@ export default function BlogPost() {
 
   // Convert markdown-like content to HTML (simple version)
   const formatContent = (content: string) => {
-    let formatted = content
+    const formatted = content
       .replace(/^#{1}\s+(.+)$/gm, '<h1 class="post-h1">$1</h1>')
       .replace(/^#{2}\s+(.+)$/gm, '<h2 class="post-h2">$1</h2>')
       .replace(/^#{3}\s+(.+)$/gm, '<h3 class="post-h3">$1</h3>')
