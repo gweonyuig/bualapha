@@ -4,7 +4,7 @@ import styles from "./page.module.css";
 
 export default function Home() {
   const getdata = async () => {
-    const response = await fetch("http://192.168.45.157:9302/");
+    const response = await fetch("http://192.168.45.157:9302/api");
     const data = await response.json();
     console.log(data);
   };
