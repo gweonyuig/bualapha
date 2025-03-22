@@ -1,36 +1,39 @@
 "use client";
 
+import Link from "next/link";
 import styles from "./page.module.css";
+import { useState, useEffect } from "react";
+
+interface BlogPost {
+  id: string;
+  title: string;
+  create_at: string;
+  contents: string;
+}
 
 export default function Home() {
   const getdata = async () => {
     const response = await fetch("http://192.168.45.157:9302/api");
     const data = await response.json();
     console.log(data);
+    return data;
   };
 
-  const blogPosts = [
-    {
-      id: 1,
-      title: "React Hooks 이해하기",
-      date: "2023-10-15",
-      excerpt: "useState와 useEffect의 기본 사용법과 활용 예제를 알아봅시다.",
-    },
-    {
-      id: 2,
-      title: "React 컴포넌트 생명주기",
-      date: "2023-10-10",
-      excerpt:
-        "React 컴포넌트의 생명주기와 각 단계에서 할 수 있는 작업들에 대해 정리했습니다.",
-    },
-    {
-      id: 3,
-      title: "상태 관리 라이브러리 비교",
-      date: "2023-10-05",
-      excerpt:
-        "Redux, Context API, Recoil 등 다양한 상태 관리 라이브러리의 장단점을 비교합니다.",
-    },
-  ];
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getdata();
+        setPosts(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setPosts([]);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div
@@ -69,7 +72,7 @@ export default function Home() {
             최근 포스트
           </h2>
           <div>
-            {blogPosts.map((post) => (
+            {posts.map((post) => (
               <article
                 key={post.id}
                 style={{
@@ -92,10 +95,10 @@ export default function Home() {
                     marginBottom: "1rem",
                   }}
                 >
-                  {post.date}
+                  {post.create_at}
                 </time>
-                <p style={{ color: "#dddddd" }}>{post.excerpt}</p>
-                <a
+                <p style={{ color: "#dddddd" }}>{post.contents}</p>
+                <Link
                   href={`/posts/${post.id}`}
                   style={{
                     display: "inline-block",
@@ -105,14 +108,11 @@ export default function Home() {
                   }}
                 >
                   더 읽기 →
-                </a>
+                </Link>
               </article>
             ))}
           </div>
         </section>
-        <div>
-          <button onClick={getdata}>데이터 가져오기</button>
-        </div>
       </main>
     </div>
   );
