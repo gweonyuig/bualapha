@@ -1,6 +1,14 @@
+"use client";
+
 import styles from "./page.module.css";
 
 export default function Home() {
+  const getdata = async () => {
+    const response = await fetch("http://192.168.45.157:9302/");
+    const data = await response.json();
+    console.log(data);
+  };
+
   const blogPosts = [
     {
       id: 1,
@@ -102,6 +110,9 @@ export default function Home() {
             ))}
           </div>
         </section>
+        <div>
+          <button onClick={getdata}>데이터 가져오기</button>
+        </div>
       </main>
     </div>
   );
