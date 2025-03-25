@@ -13,7 +13,7 @@ interface BlogPost {
 
 export default function Home() {
   const getdata = async () => {
-    const response = await fetch("http://192.168.45.157:9302/api");
+    const response = await fetch("http://211.206.34.111:9302/api");
     const data = await response.json();
     console.log(data);
     return data;
