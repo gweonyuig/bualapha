@@ -107,7 +107,7 @@ export default function Home() {
                     textDecoration: "none",
                   }}
                 >
-                  더 읽기 →
+                  더 읽r기 →
                 </Link>
               </article>
             ))}
